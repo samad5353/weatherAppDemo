@@ -13,23 +13,21 @@ class WeatherCodable: Codable {
     var timezone: String?
     var timezoneOffset: Int?
     var current: Current?
-    var minutely: [Minutely]?
     var hourly: [Current]?
     var daily: [Daily]?
     
     enum CodingKeys: String, CodingKey {
         case lat, lon, timezone
         case timezoneOffset = "timezone_offset"
-        case current, minutely, hourly, daily
+        case current, hourly, daily
     }
     
-    init(lat: Double?, lon: Double?, timezone: String?, timezoneOffset: Int?, current: Current?, minutely: [Minutely]?, hourly: [Current]?, daily: [Daily]?) {
+    init(lat: Double?, lon: Double?, timezone: String?, timezoneOffset: Int?, current: Current?, hourly: [Current]?, daily: [Daily]?) {
         self.lat = lat
         self.lon = lon
         self.timezone = timezone
         self.timezoneOffset = timezoneOffset
         self.current = current
-        self.minutely = minutely
         self.hourly = hourly
         self.daily = daily
     }
@@ -114,8 +112,8 @@ class Daily: Codable {
     var windDeg: Int?
     var windGust: Double?
     var weather: [Weather]?
-    var clouds, pop: Int?
-    var uvi: Double?
+    var clouds: Int?
+    var pop, uvi: Double?
     
     enum CodingKeys: String, CodingKey {
         case dt, sunrise, sunset, moonrise, moonset
@@ -130,7 +128,7 @@ class Daily: Codable {
         case weather, clouds, pop, uvi
     }
     
-    init(dt: Int?, sunrise: Int?, sunset: Int?, moonrise: Int?, moonset: Int?, moonPhase: Double?, temp: Temp?, feelsLike: FeelsLike?, pressure: Int?, humidity: Int?, dewPoint: Double?, windSpeed: Double?, windDeg: Int?, windGust: Double?, weather: [Weather]?, clouds: Int?, pop: Int?, uvi: Double?) {
+    init(dt: Int?, sunrise: Int?, sunset: Int?, moonrise: Int?, moonset: Int?, moonPhase: Double?, temp: Temp?, feelsLike: FeelsLike?, pressure: Int?, humidity: Int?, dewPoint: Double?, windSpeed: Double?, windDeg: Int?, windGust: Double?, weather: [Weather]?, clouds: Int?, pop: Double?, uvi: Double?) {
         self.dt = dt
         self.sunrise = sunrise
         self.sunset = sunset
@@ -179,13 +177,4 @@ class Temp: Codable {
     }
 }
 
-// MARK: - Minutely
-class Minutely: Codable {
-    var dt, precipitation: Int?
-    
-    init(dt: Int?, precipitation: Int?) {
-        self.dt = dt
-        self.precipitation = precipitation
-    }
-}
 

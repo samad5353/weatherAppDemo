@@ -11,6 +11,6 @@ struct APPURL {
     static let BaseURL                  = "https://api.openweathermap.org/data/2.5/onecall?"
     
     struct Weather {
-        static let oneLoginForForcast = "lat=%f&lon=%f&exclude=alerts,hourly,minutely&appid=%@&units=metric"
+        static let oneLoginForForcast = "lat=%f&lon=%f&exclude=alerts,minutely&appid=%@&units=metric"
     }
 }

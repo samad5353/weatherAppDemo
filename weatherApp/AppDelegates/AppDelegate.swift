@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = DBManager.shared
         let console = ConsoleDestination()
         Log.addDestination(console)
+        _ = DBManager.shared
         return true
     }
 
